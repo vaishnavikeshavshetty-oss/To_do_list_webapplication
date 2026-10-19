@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow | Smart To-Do List</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <header class="app-header">
+            <div class="brand">
+                <div class="brand-icon">✓</div>
+
+                <div>
+                    <h1>TaskFlow</h1>
+                    <p>Your day, organized.</p>
+                </div>
+            </div>
+
+            <div class="date-badge">
+                <span>📅</span>
+                <span id="currentDate"></span>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="welcome-section">
+                <span class="eyebrow">YOUR PERSONAL WORKSPACE</span>
+
+                <h2>Make today <span>count.</span></h2>
+
+                <p>
+                    Small steps every day lead to big results.
+                    What's on your list?
+                </p>
+            </section>
+
+            <!-- Statistics -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon total-icon">📋</div>
+
+                    <div>
+                        <p>Total Tasks</p>
+                        <h3 id="totalCount">0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon active-icon">⚡</div>
+
+                    <div>
+                        <p>In Progress</p>
+                        <h3 id="activeCount">0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon completed-icon">🎯</div>
+
+                    <div>
+                        <p>Completed</p>
+                        <h3 id="completedCount">0</h3>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Main Task Card -->
+            <section class="todo-card">
+
+                <div class="card-heading">
+                    <div>
+                        <h3>My Tasks</h3>
+                        <p>Stay focused and get things done.</p>
+                    </div>
+
+                    <span class="task-counter" id="taskCounter">
+                        0 tasks
+                    </span>
+                </div>
+
+                <!-- Progress -->
+                <div class="progress-section">
+
+                    <div class="progress-info">
+                        <span>Daily progress</span>
+                        <strong id="progressText">0%</strong>
+                    </div>
+
+                    <div
+                        class="progress-track"
+                        role="progressbar"
+                        aria-label="Task completion progress"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow="0"
+                        id="progressBar"
+                    >
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+
+                </div>
+
+                <!-- Add Task Form -->
+                <form id="todoForm" class="input-group">
+
+                    <span class="input-icon">✎</span>
+
+                    <input
+                        type="text"
+                        id="inputBox"
+                        placeholder="What needs to be done?"
+                        maxlength="200"
+                        autocomplete="off"
+                        aria-label="Enter a task"
+                    >
+
+                    <button type="submit" id="addBtn" class="add-btn">
+                        <span id="addBtnIcon">+</span>
+                        <span id="addBtnText">Add Task</span>
+                    </button>
+
+                </form>
+
+                <p class="keyboard-hint">
+                    <kbd>Enter ↵</kbd> to quickly add a task
+                </p>
+
+                <!-- Filters -->
+                <div class="filter-row">
+
+                    <div class="filter-tabs" role="group" aria-label="Filter tasks">
+
+                        <button class="filter-btn active" data-filter="all">
+                            All
+                        </button>
+
+                        <button class="filter-btn" data-filter="active">
+                            Active
+                        </button>
+
+                        <button class="filter-btn" data-filter="completed">
+                            Completed
+                        </button>
+
+                    </div>
+
+                    <button id="clearCompletedBtn" class="clear-btn">
+                        Clear completed
+                    </button>
+
+                </div>
+
+                <!-- Task List -->
+                <ul id="todoList" class="todo-list"></ul>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state">
+
+                    <div class="empty-illustration">📝</div>
+
+                    <h3 id="emptyTitle">Your list is looking fresh!</h3>
+
+                    <p id="emptyMessage">
+                        Add your first task above and make today productive.
+                    </p>
+
+                </div>
+
+                <footer class="card-footer">
+                    <span>✦ One task at a time.</span>
+                    <span>Made for productivity 💜</span>
+                </footer>
+
+            </section>
+
+        </main>
+
+        <!-- Toast Notification -->
+        <div
+            id="toast"
+            class="toast"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
